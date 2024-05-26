@@ -25,6 +25,8 @@ mpimg = "^0.0.1"
 joblib = "^1.4.2"
 latex = "^0.7.0"
 tex = "^1.8"
+lightgbm = "^4.3.0"
+plotnine = "^0.13.6"
 
 
 [tool.poetry.group.dev.dependencies]
