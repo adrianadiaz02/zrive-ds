@@ -499,70 +499,89 @@ all_predicted_tickers = pd.concat(all_predicted_tickers_list)
     2010-09-30T00:00:00.000000000
     Model trained for execution date: 2010-09-30T00:00:00.000000000
     2010-12-30T00:00:00.000000000
-
-
-
-    ---------------------------------------------------------------------------
-
-    KeyboardInterrupt                         Traceback (most recent call last)
-
-    Cell In[28], line 7
-          5 for execution_date in execution_dates:
-          6     print(execution_date)
-    ----> 7     all_results,all_predicted_tickers_list,all_models,model,X_train,X_test = run_model_for_execution_date(execution_date,all_results,all_predicted_tickers_list,all_models,n_trees,False)
-          9     if model is not None:
-         10         print(f"Model trained for execution date: {execution_date}")
-
-
-    Cell In[26], line 14, in run_model_for_execution_date(execution_date, all_results, all_predicted_tickers_list, all_models, n_estimators, include_nulls_in_test)
-         12 # if both train and test are not empty
-         13 if train_size > 0 and test_size>0:
-    ---> 14     model, evals_result, X_train, X_test = train_model(train_set,
-         15                                                         test_set,
-         16                                                         n_estimators = n_estimators)
-         18     test_set['prob'] = model.predict(X_test)
-         19     predicted_tickers = test_set.sort_values('prob', ascending = False)
-
-
-    Cell In[25], line 32, in train_model(train_set, test_set, n_estimators)
-         23 metric = 'binary_logloss' 
-         24 params = {
-         25          "random_state":1, 
-         26          "verbosity": -1,
-       (...)
-         29          "objective": objective,
-         30          "metric": metric}
-    ---> 32 model = lgb.train(params = params,train_set = lgb_train,
-         33                   valid_sets = [lgb_test,lgb_train],
-         34                   feval = [top_wt_performance],
-         35                   callbacks = [lgb.record_evaluation(eval_result = eval_result)])
-         36 return model,eval_result,X_train,X_test
-
-
-    File ~/.cache/pypoetry/virtualenvs/zrive-ds-3iE0R8j--py3.11/lib/python3.11/site-packages/lightgbm/engine.py:276, in train(params, train_set, num_boost_round, valid_sets, valid_names, feval, init_model, feature_name, categorical_feature, keep_training_booster, callbacks)
-        268 for cb in callbacks_before_iter:
-        269     cb(callback.CallbackEnv(model=booster,
-        270                             params=params,
-        271                             iteration=i,
-        272                             begin_iteration=init_iteration,
-        273                             end_iteration=init_iteration + num_boost_round,
-        274                             evaluation_result_list=None))
-    --> 276 booster.update(fobj=fobj)
-        278 evaluation_result_list: List[_LGBM_BoosterEvalMethodResultType] = []
-        279 # check evaluation result.
-
-
-    File ~/.cache/pypoetry/virtualenvs/zrive-ds-3iE0R8j--py3.11/lib/python3.11/site-packages/lightgbm/basic.py:3891, in Booster.update(self, train_set, fobj)
-       3889 if self.__set_objective_to_none:
-       3890     raise LightGBMError('Cannot update due to null objective function.')
-    -> 3891 _safe_call(_LIB.LGBM_BoosterUpdateOneIter(
-       3892     self._handle,
-       3893     ctypes.byref(is_finished)))
-       3894 self.__is_predicted_cur_iter = [False for _ in range(self.__num_dataset)]
-       3895 return is_finished.value == 1
-
-
-    KeyboardInterrupt: 
+    Model trained for execution date: 2010-12-30T00:00:00.000000000
+    2011-03-31T00:00:00.000000000
+    Model trained for execution date: 2011-03-31T00:00:00.000000000
+    2011-06-30T00:00:00.000000000
+    Model trained for execution date: 2011-06-30T00:00:00.000000000
+    2011-09-30T00:00:00.000000000
+    Model trained for execution date: 2011-09-30T00:00:00.000000000
+    2011-12-30T00:00:00.000000000
+    Model trained for execution date: 2011-12-30T00:00:00.000000000
+    2012-03-31T00:00:00.000000000
+    Model trained for execution date: 2012-03-31T00:00:00.000000000
+    2012-06-30T00:00:00.000000000
+    Model trained for execution date: 2012-06-30T00:00:00.000000000
+    2012-09-30T00:00:00.000000000
+    Model trained for execution date: 2012-09-30T00:00:00.000000000
+    2012-12-30T00:00:00.000000000
+    Model trained for execution date: 2012-12-30T00:00:00.000000000
+    2013-03-31T00:00:00.000000000
+    Model trained for execution date: 2013-03-31T00:00:00.000000000
+    2013-06-30T00:00:00.000000000
+    Model trained for execution date: 2013-06-30T00:00:00.000000000
+    2013-09-30T00:00:00.000000000
+    Model trained for execution date: 2013-09-30T00:00:00.000000000
+    2013-12-30T00:00:00.000000000
+    Model trained for execution date: 2013-12-30T00:00:00.000000000
+    2014-03-31T00:00:00.000000000
+    Model trained for execution date: 2014-03-31T00:00:00.000000000
+    2014-06-30T00:00:00.000000000
+    Model trained for execution date: 2014-06-30T00:00:00.000000000
+    2014-09-30T00:00:00.000000000
+    Model trained for execution date: 2014-09-30T00:00:00.000000000
+    2014-12-30T00:00:00.000000000
+    Model trained for execution date: 2014-12-30T00:00:00.000000000
+    2015-03-31T00:00:00.000000000
+    Model trained for execution date: 2015-03-31T00:00:00.000000000
+    2015-06-30T00:00:00.000000000
+    Model trained for execution date: 2015-06-30T00:00:00.000000000
+    2015-09-30T00:00:00.000000000
+    Model trained for execution date: 2015-09-30T00:00:00.000000000
+    2015-12-30T00:00:00.000000000
+    Model trained for execution date: 2015-12-30T00:00:00.000000000
+    2016-03-31T00:00:00.000000000
+    Model trained for execution date: 2016-03-31T00:00:00.000000000
+    2016-06-30T00:00:00.000000000
+    Model trained for execution date: 2016-06-30T00:00:00.000000000
+    2016-09-30T00:00:00.000000000
+    Model trained for execution date: 2016-09-30T00:00:00.000000000
+    2016-12-30T00:00:00.000000000
+    Model trained for execution date: 2016-12-30T00:00:00.000000000
+    2017-03-31T00:00:00.000000000
+    Model trained for execution date: 2017-03-31T00:00:00.000000000
+    2017-06-30T00:00:00.000000000
+    Model trained for execution date: 2017-06-30T00:00:00.000000000
+    2017-09-30T00:00:00.000000000
+    Model trained for execution date: 2017-09-30T00:00:00.000000000
+    2017-12-30T00:00:00.000000000
+    Model trained for execution date: 2017-12-30T00:00:00.000000000
+    2018-03-31T00:00:00.000000000
+    Model trained for execution date: 2018-03-31T00:00:00.000000000
+    2018-06-30T00:00:00.000000000
+    Model trained for execution date: 2018-06-30T00:00:00.000000000
+    2018-09-30T00:00:00.000000000
+    Model trained for execution date: 2018-09-30T00:00:00.000000000
+    2018-12-30T00:00:00.000000000
+    Model trained for execution date: 2018-12-30T00:00:00.000000000
+    2019-03-31T00:00:00.000000000
+    Model trained for execution date: 2019-03-31T00:00:00.000000000
+    2019-06-30T00:00:00.000000000
+    Model trained for execution date: 2019-06-30T00:00:00.000000000
+    2019-09-30T00:00:00.000000000
+    Model trained for execution date: 2019-09-30T00:00:00.000000000
+    2019-12-30T00:00:00.000000000
+    Model trained for execution date: 2019-12-30T00:00:00.000000000
+    2020-03-31T00:00:00.000000000
+    Model trained for execution date: 2020-03-31T00:00:00.000000000
+    2020-06-30T00:00:00.000000000
+    No model returned for execution date: 2020-06-30T00:00:00.000000000
+    2020-09-30T00:00:00.000000000
+    No model returned for execution date: 2020-09-30T00:00:00.000000000
+    2020-12-30T00:00:00.000000000
+    No model returned for execution date: 2020-12-30T00:00:00.000000000
+    2021-03-27T00:00:00.000000000
+    No model returned for execution date: 2021-03-27T00:00:00.000000000
 
 
 
@@ -783,35 +802,14 @@ combined_data = pd.concat([
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    Cell In[45], line 2
-          1 benchmark_performance['type'] = 'Benchmark'
-    ----> 2 filtered_results['type'] = 'Filtered'
-          4 benchmark_performance = benchmark_performance.rename(columns={'avg_surplus': 'weighted-return'})
-          5 filtered_results['execution_date'] = pd.to_datetime(filtered_results['execution_date'])
-
-
-    NameError: name 'filtered_results' is not defined
-
-
-
 ```python
 ggplot(combined_data) + geom_point(aes(x = "execution_date", y = "weighted-return", color='type')) + theme(axis_text_x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    Cell In[46], line 1
-    ----> 1 ggplot(combined_data) + geom_point(aes(x = "execution_date", y = "weighted-return", color='type')) + theme(axis_text_x = element_text(angle = 90, vjust = 0.5, hjust=1))
-
-
-    NameError: name 'combined_data' is not defined
+    
+![png](module5_files/module5_43_0.png)
+    
 
 
 We can observe that the returns are quite lower than the ones from the model given, and much more reasonable.
@@ -1457,268 +1455,7 @@ We can see that, for validations, the returns are now quite reasonable. Even tho
 
 #### 4. We are using a very high level metric to evaluate the algorithm so you maybe need to use some more low level ones
 
-
-```python
-def additional_metrics(y_true, y_pred_probs, threshold=0.5):
-    y_pred = (y_pred_probs >= threshold).astype(int)
-    precision = precision_score(y_true, y_pred)
-    recall = recall_score(y_true, y_pred)
-    roc_auc = roc_auc_score(y_true, y_pred_probs)
-    mae = mean_absolute_error(y_true, y_pred_probs)
-    tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
-    confusion = {'True Negative': tn, 'False Positive': fp, 'False Negative': fn, 'True Positive': tp}
-    
-    return {
-        'precision': precision,
-        'recall': recall,
-        'roc_auc': roc_auc,
-        'mae': mae
-    }
-```
-
-
-```python
-all_results = {}
-all_predicted_tickers_list = []
-all_models = {}
-
-metrics_data = []
-
-for execution_date in execution_dates:
-    print(execution_date)
-    all_results,all_predicted_tickers_list,all_models,model,X_train,X_test, test_set = run_model_for_execution_date(execution_date,all_results,all_predicted_tickers_list,all_models,n_trees,False)
-
-
-    if model is not None:
-        print(f"Model trained for execution date: {execution_date}")
-         # Predictions for the test set
-        y_test = test_set['target']
-        y_pred_probs = model.predict(X_test)
-
-        # Calculate and display additional metrics
-        metrics = additional_metrics(y_test, y_pred_probs)
-        metrics_data.append({
-            'execution_date': execution_date,
-            'precision': metrics['precision'],
-            'recall': metrics['recall'],
-            'roc_auc': metrics['roc_auc'],
-            'mae': metrics['mae']
-        })
-
-        print(f"Precision: {metrics['precision']}")
-        print(f"Recall: {metrics['recall']}")
-        print(f"ROC-AUC Score: {metrics['roc_auc']}")
-        print(f"Mean Absolute Error: {metrics['mae']}")
-
-    else:
-        print(f"No model returned for execution date: {execution_date}")
-   
-
-all_predicted_tickers = pd.concat(all_predicted_tickers_list) 
-metrics_df = pd.DataFrame(metrics_data)
-```
-
-    2015-03-31T00:00:00.000000000
-    No model returned for execution date: 2015-03-31T00:00:00.000000000
-    2015-06-30T00:00:00.000000000
-    No model returned for execution date: 2015-06-30T00:00:00.000000000
-    2015-09-30T00:00:00.000000000
-    No model returned for execution date: 2015-09-30T00:00:00.000000000
-    2015-12-30T00:00:00.000000000
-    No model returned for execution date: 2015-12-30T00:00:00.000000000
-    2016-03-31T00:00:00.000000000
-    Model trained for execution date: 2016-03-31T00:00:00.000000000
-    Precision: 0.6527377521613833
-    Recall: 0.2636786961583236
-    ROC-AUC Score: 0.5296783624304368
-    Mean Absolute Error: 0.5101184536483749
-    2016-06-30T00:00:00.000000000
-    Model trained for execution date: 2016-06-30T00:00:00.000000000
-    Precision: 0.5952380952380952
-    Recall: 0.21406727828746178
-    ROC-AUC Score: 0.5084557048314255
-    Mean Absolute Error: 0.5110878807268968
-    2016-09-30T00:00:00.000000000
-    Model trained for execution date: 2016-09-30T00:00:00.000000000
-    Precision: 0.5628691983122363
-    Recall: 0.4314359637774903
-    ROC-AUC Score: 0.5241120760210226
-    Mean Absolute Error: 0.49796912462165027
-    2016-12-30T00:00:00.000000000
-    Model trained for execution date: 2016-12-30T00:00:00.000000000
-    Precision: 0.3668261562998405
-    Recall: 0.18110236220472442
-    ROC-AUC Score: 0.47876288423130775
-    Mean Absolute Error: 0.4922159211702064
-    2017-03-31T00:00:00.000000000
-    Model trained for execution date: 2017-03-31T00:00:00.000000000
-    Precision: 0.4279863481228669
-    Recall: 0.45699708454810495
-    ROC-AUC Score: 0.4620782063364837
-    Mean Absolute Error: 0.5092384776176265
-    2017-06-30T00:00:00.000000000
-    Model trained for execution date: 2017-06-30T00:00:00.000000000
-    Precision: 0.456198347107438
-    Recall: 0.1928721174004193
-    ROC-AUC Score: 0.4968874604349077
-    Mean Absolute Error: 0.49744320453645535
-    2017-09-30T00:00:00.000000000
-    Model trained for execution date: 2017-09-30T00:00:00.000000000
-    Precision: 0.30985915492957744
-    Recall: 0.1945181255526083
-    ROC-AUC Score: 0.4624048446292254
-    Mean Absolute Error: 0.48505941392083435
-    2017-12-30T00:00:00.000000000
-    Model trained for execution date: 2017-12-30T00:00:00.000000000
-    Precision: 0.4884287454323995
-    Recall: 0.31525157232704404
-    ROC-AUC Score: 0.5743219286987162
-    Mean Absolute Error: 0.4761175821342475
-    2018-03-31T00:00:00.000000000
-    Model trained for execution date: 2018-03-31T00:00:00.000000000
-    Precision: 0.47530864197530864
-    Recall: 0.2467948717948718
-    ROC-AUC Score: 0.5506076012024576
-    Mean Absolute Error: 0.4699305039593387
-    2018-06-30T00:00:00.000000000
-    Model trained for execution date: 2018-06-30T00:00:00.000000000
-    Precision: 0.4150268336314848
-    Recall: 0.2194891201513718
-    ROC-AUC Score: 0.5792517068856623
-    Mean Absolute Error: 0.454598080040027
-    2018-09-30T00:00:00.000000000
-    Model trained for execution date: 2018-09-30T00:00:00.000000000
-    Precision: 0.5415282392026578
-    Recall: 0.12804399057344854
-    ROC-AUC Score: 0.5188459825732731
-    Mean Absolute Error: 0.46919160743089877
-    2018-12-30T00:00:00.000000000
-    Model trained for execution date: 2018-12-30T00:00:00.000000000
-    Precision: 0.40961709706144256
-    Recall: 0.7126258714175058
-    ROC-AUC Score: 0.5210816843194541
-    Mean Absolute Error: 0.5070162493557947
-    2019-03-31T00:00:00.000000000
-    Model trained for execution date: 2019-03-31T00:00:00.000000000
-    Precision: 0.2283076923076923
-    Recall: 0.44806763285024154
-    ROC-AUC Score: 0.47024383283058524
-    Mean Absolute Error: 0.5070629269697938
-    2019-06-30T00:00:00.000000000
-    Model trained for execution date: 2019-06-30T00:00:00.000000000
-    Precision: 0.49303621169916434
-    Recall: 0.18172484599589322
-    ROC-AUC Score: 0.6017528037942967
-    Mean Absolute Error: 0.43514691189355337
-    2019-09-30T00:00:00.000000000
-    Model trained for execution date: 2019-09-30T00:00:00.000000000
-    Precision: 0.3997194950911641
-    Recall: 0.28217821782178215
-    ROC-AUC Score: 0.5820974465867639
-    Mean Absolute Error: 0.46516869353681106
-    2019-12-30T00:00:00.000000000
-    Model trained for execution date: 2019-12-30T00:00:00.000000000
-    Precision: 0.5272727272727272
-    Recall: 0.2111650485436893
-    ROC-AUC Score: 0.6149913015034939
-    Mean Absolute Error: 0.4562204745806796
-    2020-03-31T00:00:00.000000000
-    Model trained for execution date: 2020-03-31T00:00:00.000000000
-    Precision: 0.6425339366515838
-    Recall: 0.1242344706911636
-    ROC-AUC Score: 0.5446628855624744
-    Mean Absolute Error: 0.5195615455486301
-    2020-06-30T00:00:00.000000000
-    No model returned for execution date: 2020-06-30T00:00:00.000000000
-    2020-09-30T00:00:00.000000000
-    No model returned for execution date: 2020-09-30T00:00:00.000000000
-    2020-12-30T00:00:00.000000000
-    No model returned for execution date: 2020-12-30T00:00:00.000000000
-    2021-03-27T00:00:00.000000000
-    No model returned for execution date: 2021-03-27T00:00:00.000000000
-
-
-
-```python
-def plot_metrics(metrics_df):
-    # Create a figure with 4 subplots
-    fig, axs = plt.subplots(4, 1, figsize=(8, 10))
-
-    # Plot Precision
-    axs[0].plot(metrics_df['execution_date'], metrics_df['precision'], marker='o', linestyle='-')
-    axs[0].set_title('Precision')
-    axs[0].set_xlabel('Execution Date')
-    axs[0].set_ylabel('Precision')
-
-    # Plot Recall
-    axs[1].plot(metrics_df['execution_date'], metrics_df['recall'], marker='o', linestyle='-')
-    axs[1].set_title('Recall')
-    axs[1].set_xlabel('Execution Date')
-    axs[1].set_ylabel('Recall')
-
-    # Plot ROC-AUC
-    axs[2].plot(metrics_df['execution_date'], metrics_df['roc_auc'], marker='o', linestyle='-')
-    axs[2].set_title('ROC-AUC Score')
-    axs[2].set_xlabel('Execution Date')
-    axs[2].set_ylabel('ROC-AUC Score')
-
-    # Plot Mean Absolute Error
-    axs[3].plot(metrics_df['execution_date'], metrics_df['mae'], marker='o', linestyle='-')
-    axs[3].set_title('Mean Absolute Error')
-    axs[3].set_xlabel('Execution Date')
-    axs[3].set_ylabel('Mean Absolute Error')
-
-    # Adjust layout
-    plt.tight_layout()
-
-    return fig, axs
-
-```
-
-
-```python
-fig, axs = plot_metrics(metrics_df)
-plt.show()
-```
-
-
-    
-![png](module5_files/module5_88_0.png)
-    
-
-
-
-```python
-test_results = parse_results_into_df("valid_0")
-train_results = parse_results_into_df("training")
-
-test_results_final_tree = test_results.sort_values(["execution_date","n_trees"]).drop_duplicates("execution_date",keep = "last")
-train_results_final_tree = train_results.sort_values(["execution_date","n_trees"]).drop_duplicates("execution_date",keep = "last")
-```
-
-
-```python
-ggplot(test_results_final_tree) + geom_point(aes(x = "execution_date", y = "weighted-return")) + theme(axis_text_x = element_text(angle = 90, vjust = 0.5, hjust=1))
-```
-
-
-    
-![png](module5_files/module5_90_0.png)
-    
-
-
-
-```python
-ggplot(train_results_final_tree) + geom_point(aes(x = "execution_date", y = "weighted-return")) + theme(axis_text_x = element_text(angle = 90, vjust = 0.5, hjust=1))
-```
-
-
-    
-![png](module5_files/module5_91_0.png)
-    
-
-
-Actually, this is not what was expected. The thing here is that, even tough it is important to have the final business metric (weighted return) in mind, the actual metric the model is trying to minimize is the binary log-loss. Therefore, in order to understand what the model is doing, we should work with this metric, which is closer to the model.
+My first idea was to use the typical metrics precision, recall, roc_auc, and mae. Buy actually, this is not what was expected. The thing here is that, even tough it is important to have the final business metric (weighted return) in mind, the actual metric the model is trying to minimize is the binary log-loss. Therefore, in order to understand what the model is doing, we should work with this metric, which is closer to the model.
 
 Therefore, we create a function that computes the percentage difference of each metric in each new tree with respect to the value of the metric in the first tree. This way, we will be able to see if the metric is improving or not across trees.
 
@@ -1819,7 +1556,7 @@ plt.show()
 
 
     
-![png](module5_files/module5_95_0.png)
+![png](module5_files/module5_88_0.png)
     
 
 
@@ -1838,7 +1575,7 @@ plt.show()
 
 
     
-![png](module5_files/module5_97_0.png)
+![png](module5_files/module5_90_0.png)
     
 
 
@@ -1963,7 +1700,7 @@ plt.show()
 
 
     
-![png](module5_files/module5_106_0.png)
+![png](module5_files/module5_99_0.png)
     
 
 
@@ -1980,7 +1717,7 @@ plt.show()
 
 
     
-![png](module5_files/module5_107_0.png)
+![png](module5_files/module5_100_0.png)
     
 
 
@@ -2002,7 +1739,7 @@ ggplot(train_results_final_tree) + geom_point(aes(x = "execution_date", y = "wei
 
 
     
-![png](module5_files/module5_110_0.png)
+![png](module5_files/module5_103_0.png)
     
 
 
@@ -2026,7 +1763,7 @@ ggplot(combined_data_test) + geom_point(aes(x = "execution_date", y = "weighted-
 
 
     
-![png](module5_files/module5_113_0.png)
+![png](module5_files/module5_106_0.png)
     
 
 
@@ -2072,7 +1809,7 @@ plt.show()
 
 
     
-![png](module5_files/module5_117_0.png)
+![png](module5_files/module5_110_0.png)
     
 
 
